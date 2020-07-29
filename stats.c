@@ -9,13 +9,17 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief Displays statistics for an array of data
  *
- * <Add Extended Description Here>
+ * Analyze an array of unsigned char data items and report analytics on the 
+ * maximum, minimum, mean, and median of the data set. In addition is 
+ * reordered this data set from large to small. All statistics are rounded down
+ * to the nearest integer. After analysis and sorting is done, the data is 
+ * printed to the screen in nicely formatted presentation.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Juan Perez
+ * @date   2020-07-29
  *
  */
 
@@ -35,9 +39,72 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  unsigned char * ptr = test;
+  unsigned char median;
+  unsigned char mean;
+  unsigned char max;
+  unsigned char min;
+
+  // Print the original array
+  printf("\t======== Original Array =======\n"); 
+  print_array(ptr, SIZE);
+
+  // Reorded array in ascending order
+  sort_array(ptr, SIZE);
+
+  // Obtain statistics
+  min    = find_minimum(ptr, SIZE);
+  max    = find_maximum(ptr, SIZE);
+  mean   = find_mean(ptr, SIZE);
+  median = find_median(ptr, SIZE);
+
+  // Print statistics
+  print_statistics(min, max, mean, median);
+
+  // Print the ordered array to the screen
+  printf( "\t========= Ordered Array =======\n" ); 
+  print_array(ptr, SIZE);
 
 }
 
-/* Add other Implementation File Code Here */
+/* Prints de array in the screen */
+
+void print_array(unsigned char * ptr, int size) {
+}
+
+/* Prints statistics  */
+
+void print_statistics(unsigned char minimum, unsigned char maximum, 
+		      unsigned char mean, unsigned char median) {
+}
+
+/* Obtain minimum */
+
+unsigned char find_minimum(unsigned char * ptr, int size) {
+}
+
+/* Obtain maximum */
+
+unsigned char find_maximum(unsigned char * ptr, int size) {
+}
+
+/* Obtain mean */
+
+unsigned char find_mean(unsigned char * ptr, int size) {
+}
+
+/* Obtain median */
+//  Conventionally, the values are listed in ascending order.
+//  In the case where the total number of values in a data sample is odd, the
+//  median is simply the number in the middle of the list of all values. When 
+//  the data sample contains an even number of values, the median is the mean 
+//  of the two middle values. 
+
+unsigned char find_median(unsigned char * ptr, int size) {
+}
+
+/* Sort array descending */
+
+void sort_array(unsigned char * ptr, int size) {
+}
+
