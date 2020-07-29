@@ -70,27 +70,60 @@ void main() {
 /* Prints de array in the screen */
 
 void print_array(unsigned char * ptr, int size) {
+  for ( int i=0; i < size; i++ ) {
+    if ( i == 0 )
+      printf( "\t" );
+    else if ( i % 8 == 0 )
+      printf( "\n\t" );
+    printf( "%3d ", ptr[i] );
+  }
+  printf( "\n" );
 }
 
 /* Prints statistics  */
 
 void print_statistics(unsigned char minimum, unsigned char maximum, 
 		      unsigned char mean, unsigned char median) {
+  printf( "\n");
+  printf( "\t========== Statistics =========\n");
+  printf( "\t Minimum Maximum  Mean  Median\n");
+  printf( "\t ======= ======= ====== ======\n");
+  printf( "\t   %3d     %3d     %3d    %3d\n", minimum, maximum, mean, median );
+  printf( "\n" ); 
 }
 
 /* Obtain minimum */
 
 unsigned char find_minimum(unsigned char * ptr, int size) {
+  unsigned char minimum = 0xff;
+  for ( int i=0; i < size; i++ ) {
+    if ( ptr[i] < minimum )
+      minimum = ptr[i];
+  }
+  return minimum;
 }
 
 /* Obtain maximum */
 
 unsigned char find_maximum(unsigned char * ptr, int size) {
+  unsigned char maximum = 0x00;
+  for ( int i=0; i < size; i++ ) {
+    if ( ptr[i] > maximum )
+      maximum = ptr[i];
+  }
+  return maximum;
 }
 
 /* Obtain mean */
 
 unsigned char find_mean(unsigned char * ptr, int size) {
+  unsigned int sum = 0;
+  unsigned char mean = 0;
+  for ( int i=0; i < size; i++ ) {
+      sum += ptr[i];
+  }
+  mean = sum / size;
+  return mean;
 }
 
 /* Obtain median */
@@ -101,10 +134,30 @@ unsigned char find_mean(unsigned char * ptr, int size) {
 //  of the two middle values. 
 
 unsigned char find_median(unsigned char * ptr, int size) {
+  unsigned int middle = (size / 2) - 1;
+  unsigned int sum = 0;
+  unsigned char median = 0;
+
+  // Even number of values so we get two values for the calculation
+  sum = ptr[middle] + ptr[middle + 1];
+  median = sum / 2;
+  return median;
 }
 
 /* Sort array descending */
 
 void sort_array(unsigned char * ptr, int size) {
+  unsigned char aux = 0;
+    
+  for ( int i = 0; i < size; i++ ) {
+    for ( int j = i+1; j < size; j++ ) {
+      if ( ptr[i] < ptr[j] ) {
+        aux = ptr[i];
+        ptr[i] = ptr[j];
+        ptr[j] = aux;
+      }
+    }
+  }
 }
+
 

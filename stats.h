@@ -25,10 +25,10 @@
  * Prints the statistics of an unsigned char array including minimun, maximun,
  * mean and median.
  *
- * @param unsigned char Minimum
- * @param unsigned char Maximum
- * @param unsigned char Mean
- * @param unsigned char Median
+ * @param unsigned char    Minimum
+ * @param unsigned char    Maximum
+ * @param unsigned char    Mean
+ * @param unsigned char    Median
  * @return void
  */
 void print_statistics(unsigned char minimum, unsigned char maximum, 
